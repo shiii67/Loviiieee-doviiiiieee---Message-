@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A Little Surprise 💗</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: "Poppins", sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.8) 0 2px, transparent 3px),
+        linear-gradient(135deg, #ffdce9, #eadfff, #def5ff);
+      background-size: 180px 180px, 230px 230px, cover;
+      color: #68495d;
+    }
+
+    /* =========================
+       FLOATING HEARTS
+    ========================= */
+
+    .floating-heart {
+      position: fixed;
+      bottom: -40px;
+      pointer-events: none;
+      opacity: 0;
+      animation: floatHeart 8s linear infinite;
+      z-index: 1;
+    }
+
+    .heart1 { left: 8%; animation-delay: 0s; }
+    .heart2 { left: 25%; animation-delay: 2s; }
+    .heart3 { left: 45%; animation-delay: 4s; }
+    .heart4 { left: 68%; animation-delay: 1s; }
+    .heart5 { left: 88%; animation-delay: 3s; }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: .6;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+
+    /* =========================
+       OPENING SCREEN
+    ========================= */
+
+    .opening {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 5;
+      padding: 20px;
+      transition: .8s ease;
+    }
+
+    .opening.hide {
+      opacity: 0;
+      transform: scale(.8);
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(92vw, 520px);
+    }
+
+    .tiny-text {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a47791;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: "Caveat", cursive;
+      font-size: clamp(44px, 11vw, 65px);
+      line-height: .95;
+      color: #754c64;
+      margin-bottom: 25px;
+    }
+
+    /* =========================
+       CUTE CSS CAT
+    ========================= */
+
+    .cat {
+      width: 155px;
+      height: 130px;
+      position: relative;
+      margin: 0 auto 8px;
+      animation: catFloat 2.5s ease-in-out infinite;
+      filter: drop-shadow(0 15px 12px rgba(120,70,100,.15));
+    }
+
+    .cat-body {
+      position: absolute;
+      width: 105px;
+      height: 82px;
+      background: #fffaf7;
+      border: 3px solid #dfc8d0;
+      border-radius: 50% 50% 42% 42%;
+      bottom: 2px;
+      left: 25px;
+    }
+
+    .cat-head {
+      position: absolute;
+      width: 105px;
+      height: 90px;
+      background: #fffaf7;
+      border: 3px solid #dfc8d0;
+      border-radius: 50%;
+      left: 25px;
+      top: 5px;
+      z-index: 2;
+    }
+
+    /* ears */
+
+    .ear-left,
+    .ear-right {
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      background: #fffaf7;
+      border: 3px solid #dfc8d0;
+      top: -18px;
+      z-index: -1;
+    }
+
+    .ear-left {
+      left: 4px;
+      transform: rotate(-35deg);
+      border-radius: 8px 30px 5px 30px;
+    }
+
+    .ear-right {
+      right: 4px;
+      transform: rotate(35deg);
+      border-radius: 30px 8px 30px 5px;
+    }
+
+    .ear-left::after,
+    .ear-right::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      background: #ffc8d9;
+      border-radius: inherit;
+    }
+
+    /* eyes */
+
+    .eye {
+      position: absolute;
+      width: 9px;
+      height: 13px;
+      background: #59444f;
+      border-radius: 50%;
+      top: 37px;
+    }
+
+    .eye.left {
+      left: 28px;
+    }
+
+    .eye.right {
+      right: 28px;
+    }
+
+    .eye::after {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+    }
+
+    /* nose */
+
+    .nose {
+      position: absolute;
+      top: 53px;
+      left: 47px;
+      width: 10px;
+      height: 7px;
+      background: #e98ca9;
+      border-radius: 50%;
+    }
+
+    /* mouth */
+
+    .mouth {
+      position: absolute;
+      top: 59px;
+      left: 47px;
+      width: 12px;
+      height: 7px;
+      border-bottom: 2px solid #8b6171;
+      border-radius: 50%;
+    }
+
+    /* cheeks */
+
+    .cheek {
+      position: absolute;
+      width: 17px;
+      height: 9px;
+      background: #ffc9d8;
+      opacity: .7;
+      border-radius: 50%;
+      top: 57px;
+    }
+
+    .cheek.left {
+      left: 10px;
+    }
+
+    .cheek.right {
+      right: 10px;
+    }
+
+    /* whiskers */
+
+    .whisker {
+      position: absolute;
+      width: 25px;
+      height: 1px;
+      background: #c6aab5;
+      top: 58px;
+    }
+
+    .whisker.one {
+      left: -15px;
+      transform: rotate(10deg);
+    }
+
+    .whisker.two {
+      left: -15px;
+      top: 65px;
+      transform: rotate(-5deg);
+    }
+
+    .whisker.three {
+      right: -15px;
+      transform: rotate(-10deg);
+    }
+
+    .whisker.four {
+      right: -15px;
+      top: 65px;
+      transform: rotate(5deg);
+    }
+
+    /* paws */
+
+    .paw {
+      position: absolute;
+      width: 38px;
+      height: 25px;
+      background: #fffaf7;
+      border: 3px solid #dfc8d0;
+      border-radius: 50%;
+      bottom: 4px;
+      z-index: 3;
+    }
+
+    .paw.left {
+      left: 30px;
+      transform: rotate(15deg);
+    }
+
+    .paw.right {
+      right: 30px;
+      transform: rotate(-15deg);
+    }
+
+    /* tail */
+
+    .tail {
+      position: absolute;
+      width: 48px;
+      height: 55px;
+      border: 9px solid #fffaf7;
+      border-left: none;
+      border-bottom: none;
+      border-radius: 0 45px 0 0;
+      right: 2px;
+      bottom: 17px;
+      transform: rotate(15deg);
+      z-index: -1;
+    }
+
+    @keyframes catFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(2deg);
+      }
+    }
+
+    .cat-message {
+      font-family: "Caveat", cursive;
+      font-size: 25px;
+      color: #91657d;
+      margin-bottom: 16px;
+    }
+
+
+    /* =========================
+       GIFT
+    ========================= */
+
+    .gift-wrapper {
+      display: inline-block;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .gift {
+      width: 130px;
+      height: 115px;
+      position: relative;
+      animation: giftPulse 2s infinite;
+      transition: .3s ease;
+      filter: drop-shadow(0 10px 18px rgba(255,100,150,.25));
+    }
+
+    .gift-wrapper:hover .gift {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    @keyframes giftPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .gift-box {
+      position: absolute;
+      width: 112px;
+      height: 75px;
+      bottom: 0;
+      left: 9px;
+      background: linear-gradient(135deg, #ff9fbd, #ff83ab);
+      border-radius: 8px;
+    }
+
+    .gift-box::after {
+      content: "";
+      position: absolute;
+      left: 47px;
+      top: 0;
+      width: 18px;
+      height: 75px;
+      background: #ffe1eb;
+    }
+
+    .gift-lid {
+      position: absolute;
+      width: 130px;
+      height: 28px;
+      top: 25px;
+      left: 0;
+      background: #ff76a2;
+      border-radius: 8px;
+      z-index: 3;
+    }
+
+    .gift-lid::after {
+      content: "";
+      position: absolute;
+      left: 56px;
+      width: 18px;
+      height: 28px;
+      background: #ffe1eb;
+    }
+
+    .bow-left,
+    .bow-right {
+      position: absolute;
+      top: 3px;
+      width: 43px;
+      height: 27px;
+      border: 8px solid #ffe1eb;
+      border-radius: 50%;
+      z-index: 5;
+    }
+
+    .bow-left {
+      left: 29px;
+      transform: rotate(25deg);
+    }
+
+    .bow-right {
+      right: 29px;
+      transform: rotate(-25deg);
+    }
+
+    .click {
+      margin-top: 15px;
+      color: #9c7189;
+      font-size: 13px;
+      animation: blink 1.7s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: .4;
+      }
+    }
+
+
+    /* =========================
+       LETTER SCREEN
+    ========================= */
+
+    .letter-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+
+      background: rgba(255,222,237,.86);
+      backdrop-filter: blur(12px);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: .8s ease;
+    }
+
+    .letter-screen.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .letter {
+      width: min(94vw, 550px);
+      max-height: 88vh;
+      overflow-y: auto;
+
+      padding: 45px 38px;
+
+      background: #fffaf4;
+      border-radius: 5px;
+
+      box-shadow: 0 30px 80px rgba(100,60,80,.25);
+
+      position: relative;
+
+      transform:
+        translateY(80px)
+        scale(.8)
+        rotate(-4deg);
+
+      transition: 1s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .letter-screen.show .letter {
+      transform:
+        translateY(0)
+        scale(1)
+        rotate(0);
+    }
+
+    .letter::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px dashed #eac5d3;
+      pointer-events: none;
+    }
+
+    .letter-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter-title {
+      text-align: center;
+      font-family: "Caveat", cursive;
+      font-size: 45px;
+      color: #784d64;
+      margin-bottom: 20px;
+    }
+
+    .letter p {
+      font-family: "Caveat", cursive;
+      font-size: 25px;
+      line-height: 1.45;
+      color: #715663;
+      margin-bottom: 18px;
+    }
+
+    .signature {
+      text-align: right;
+      font-family: "Caveat", cursive;
+      font-size: 28px;
+      color: #a45e7c;
+      margin-top: 25px;
+    }
+
+    .close {
+      display: block;
+      margin: 30px auto 0;
+      border: none;
+      background: #ff91b5;
+      color: white;
+      padding: 11px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       BUTTERFLIES
+    ========================= */
+
+    .butterfly-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 30;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .butterfly-container.fly {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .butterfly {
+      position: absolute;
+      font-size: 28px;
+      opacity: 0;
+    }
+
+    .butterfly-container.fly .butterfly {
+      animation: butterflyFly 5s ease-in-out forwards;
+    }
+
+    .b1 {
+      left: 5%;
+      bottom: -40px;
+      animation-delay: 0s !important;
+    }
+
+    .b2 {
+      left: 25%;
+      bottom: -60px;
+      animation-delay: .5s !important;
+    }
+
+    .b3 {
+      left: 48%;
+      bottom: -50px;
+      animation-delay: 1s !important;
+    }
+
+    .b4 {
+      left: 70%;
+      bottom: -40px;
+      animation-delay: 1.5s !important;
+    }
+
+    .b5 {
+      left: 90%;
+      bottom: -70px;
+      animation-delay: .8s !important;
+    }
+
+    .b6 {
+      left: 15%;
+      bottom: -50px;
+      animation-delay: 2s !important;
+    }
+
+    @keyframes butterflyFly {
+      0% {
+        transform:
+          translate(0, 0)
+          rotate(-15deg)
+          scale(.5);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      30% {
+        transform:
+          translate(80px, -25vh)
+          rotate(15deg)
+          scale(.8);
+      }
+
+      55% {
+        transform:
+          translate(-50px, -55vh)
+          rotate(-12deg)
+          scale(1);
+      }
+
+      75% {
+        transform:
+          translate(100px, -75vh)
+          rotate(12deg)
+          scale(.9);
+      }
+
+      100% {
+        transform:
+          translate(-40px, -115vh)
+          rotate(-10deg)
+          scale(.7);
+        opacity: 0;
+      }
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 500px) {
+
+      .cat {
+        transform: scale(.85);
+        margin-top: -5px;
+      }
+
+      h1 {
+        font-size: 49px;
+      }
+
+      .letter {
+        padding: 35px 27px;
+      }
+
+      .letter p {
+        font-size: 22px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- Floating hearts -->
+
+  <div class="floating-heart heart1">♡</div>
+  <div class="floating-heart heart2">♥</div>
+  <div class="floating-heart heart3">♡</div>
+  <div class="floating-heart heart4">♥</div>
+  <div class="floating-heart heart5">♡</div>
+
+
+  <!-- =========================
+       OPENING SCREEN
+  ========================= -->
+
+  <main class="opening" id="opening">
+
+    <div class="container">
+
+      <div class="tiny-text">
+        a tiny surprise ♡
+      </div>
+
+      <h1>
+        A small message for you<br>
+        loviiieee doviiiiieee 💗
+      </h1>
+
+
+      <!-- Cute animated cat -->
+
+      <div class="cat">
+
+        <div class="cat-body"></div>
+
+        <div class="tail"></div>
+
+        <div class="cat-head">
+
+          <div class="ear-left"></div>
+          <div class="ear-right"></div>
+
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+
+          <div class="cheek left"></div>
+          <div class="cheek right"></div>
+
+          <div class="nose"></div>
+          <div class="mouth"></div>
+
+          <div class="whisker one"></div>
+          <div class="whisker two"></div>
+          <div class="whisker three"></div>
+          <div class="whisker four"></div>
+
+        </div>
+
+        <div class="paw left"></div>
+        <div class="paw right"></div>
+
+      </div>
+
+
+      <div class="cat-message">
+        "LITTLE MESSAGE FOR YOU"
+      </div>
+
+
+      <!-- Gift -->
+
+      <div
+        class="gift-wrapper"
+        onclick="openGift()"
+      >
+
+        <div class="gift">
+
+          <div class="bow-left"></div>
+          <div class="bow-right"></div>
+
+          <div class="gift-lid"></div>
+
+          <div class="gift-box"></div>
+
+        </div>
+
+        <div class="click">
+          ✨ tap the gift ✨
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =========================
+       BUTTERFLIES
+  ========================= -->
+
+  <div class="butterfly-container" id="butterflies">
+
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
+    <div class="butterfly b3">🦋</div>
+    <div class="butterfly b4">🦋</div>
+    <div class="butterfly b5">🦋</div>
+    <div class="butterfly b6">🦋</div>
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
+    <div class="butterfly b3">🦋</div>
+    <div class="butterfly b4">🦋</div>
+    <div class="butterfly b5">🦋</div>
+    <div class="butterfly b6">🦋</div>
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
+    <div class="butterfly b3">🦋</div>
+    <div class="butterfly b4">🦋</div>
+    <div class="butterfly b5">🦋</div>
+    <div class="butterfly b6">🦋</div>
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
+    <div class="butterfly b3">🦋</div>
+    <div class="butterfly b4">🦋</div>
+    <div class="butterfly b5">🦋</div>
+    <div class="butterfly b6">🦋</div>
+  </div>
+
+
+  <!-- =========================
+       LOVE LETTER
+  ========================= -->
+
+  <section class="letter-screen" id="letterScreen">
+
+    <article class="letter">
+
+      <div class="letter-content">
+
+        <h2 class="letter-title">
+          A lill confession 
+        </h2>
+
+
+        <!-- EDIT YOUR LETTER HERE -->
+
+        <p>
+          Mahh cutieeee Aaruuu 😚💋✨,
+        </p>
+
+        <p>
+          I LOVE YOU!✨♡
+          I'm so greatful to have you in my life, thank you soooooo
+          much for existing in my life🫠🫠✨.
+        </p>
+
+        <p>
+          I love you, I want you, I need you,
+          I crave you, I wanna hug you, I wanna kiss
+          you, I wanna adore you, I loveee youuuuuuuuuu bishhhhhhhh💖✨.
+        </p>
+
+        <p>
+          You are someone who makes ordinary moments
+          feel a little more special, and I just wanted
+          you to know that you mean a lot to me. 🌷
+        </p>
+
+      <p> 
+          Dherrr saari chummiyaaa 💋💋💋💋💋💋💋💋💋💋💋💋💋✨
+      </p>
+        
+        <p>
+          So whenever you see this little letter,
+          remember that someone out there is thinking
+          about you with a very big smile.🌹 ♡
+        </p>
+
+        <div class="signature">
+          With lots and lots of love,<br>
+          your one and only BABYYYYYYYYYY 💗
+        </div>
+
+
+        <button class="close" onclick="closeLetter()">
+          close the letter ♡
+        </button>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <script>
+
+    function openGift() {
+
+      const opening =
+        document.getElementById("opening");
+
+      const letter =
+        document.getElementById("letterScreen");
+
+      const butterflies =
+        document.getElementById("butterflies");
+
+
+      /* Hide opening screen */
+
+      opening.classList.add("hide");
+
+
+      /*
+        Start butterflies immediately.
+        They fly around while the letter
+        is appearing.
+      */
+
+      butterflies.classList.add("fly");
+
+
+      /* Open the letter after a tiny delay */
+
+      setTimeout(() => {
+
+        letter.classList.add("show");
+
+      }, 500);
+
+
+      /*
+        Let the butterflies disappear
+        after their flight.
+      */
+
+      setTimeout(() => {
+
+        butterflies.classList.remove("fly");
+
+      }, 5500);
+
+    }
+
+
+    function closeLetter() {
+
+      const opening =
+        document.getElementById("opening");
+
+      const letter =
+        document.getElementById("letterScreen");
+
+
+      letter.classList.remove("show");
+
+
+      setTimeout(() => {
+
+        opening.classList.remove("hide");
+
+      }, 600);
+
+    }
+
+  </script>
+
+</body>
+</html>
+<!-- =========================================
+     ADD THIS JUST BEFORE </body>
+========================================= -->
+
+<button
+  id="musicButton"
+  onclick="toggleMusic()"
+  style="
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 100;
+    border: none;
+    background: rgba(255,255,255,.65);
+    backdrop-filter: blur(8px);
+    color: #80556d;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 5px 20px rgba(100,60,80,.15);
+  "
+>
+  ♪
+</button>
+
+
+<script>
+
+  /* =========================================
+     SOFT ORIGINAL PIANO-LIKE MUSIC
+  ========================================= */
+
+  let audioContext;
+  let masterGain;
+  let musicPlaying = false;
+  let musicTimer;
+
+  /*
+    A small original melody.
+    These are musical notes rather than
+    an existing copyrighted song.
+  */
+
+  const melody = [
+    ["E4", 0.45],
+    ["G4", 0.45],
+    ["B4", 0.7],
+    ["G4", 0.45],
+
+    ["D4", 0.45],
+    ["F#4", 0.45],
+    ["A4", 0.7],
+    ["F#4", 0.45],
+
+    ["C4", 0.45],
+    ["E4", 0.45],
+    ["G4", 0.7],
+    ["E4", 0.45],
+
+    ["D4", 0.45],
+    ["G4", 0.45],
+    ["B4", 0.9]
+  ];
+
+
+  const frequencies = {
+
+    "C4": 261.63,
+    "D4": 293.66,
+    "E4": 329.63,
+    "F#4": 369.99,
+    "G4": 392.00,
+    "A4": 440.00,
+    "B4": 493.88,
+
+    "C5": 523.25,
+    "D5": 587.33,
+    "E5": 659.25,
+    "F#5": 739.99,
+    "G5": 783.99,
+    "A5": 880.00
+  };
+
+
+  function playNote(note, duration) {
+
+    if (!audioContext) return;
+
+    const oscillator =
+      audioContext.createOscillator();
+
+    const gain =
+      audioContext.createGain();
+
+    const now =
+      audioContext.currentTime;
+
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.value =
+      frequencies[note];
+
+
+    /*
+      Soft piano-like envelope
+    */
+
+    gain.gain.setValueAtTime(
+      0,
+      now
+    );
+
+    gain.gain.linearRampToValueAtTime(
+      0.10,
+      now + 0.04
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      now + duration
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(masterGain);
+
+    oscillator.start(now);
+
+    oscillator.stop(
+      now + duration + 0.05
+    );
+  }
+
+
+  function playMelody() {
+
+    if (!musicPlaying) return;
+
+    let delay = 0;
+
+
+    melody.forEach(([note, duration]) => {
+
+      setTimeout(() => {
+
+        if (musicPlaying) {
+          playNote(note, duration);
+        }
+
+      }, delay * 1000);
+
+
+      delay += duration;
+    });
+
+
+    /*
+      Loop the melody
+    */
+
+    musicTimer = setTimeout(
+      playMelody,
+      delay * 1000 + 300
+    );
+  }
+
+
+  function startMusic() {
+
+    if (musicPlaying) return;
+
+
+    audioContext =
+      new (
+        window.AudioContext ||
+        window.webkitAudioContext
+      )();
+
+
+    masterGain =
+      audioContext.createGain();
+
+
+    /*
+      Keep the music very soft
+    */
+
+    masterGain.gain.value = 0.22;
+
+    masterGain.connect(
+      audioContext.destination
+    );
+
+
+    musicPlaying = true;
+
+    document.getElementById(
+      "musicButton"
+    ).innerHTML = "♫";
+
+
+    playMelody();
+  }
+
+
+  function stopMusic() {
+
+    musicPlaying = false;
+
+    clearTimeout(musicTimer);
+
+
+    if (masterGain) {
+
+      masterGain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.5
+      );
+
+    }
+
+
+    document.getElementById(
+      "musicButton"
+    ).innerHTML = "♪";
+  }
+
+
+  function toggleMusic() {
+
+    if (musicPlaying) {
+      stopMusic();
+    } else {
+      startMusic();
+    }
+
+  }
+
+
+  /*
+    IMPORTANT:
+    Replace your existing openGift()
+    function with this one.
+  */
+
+  function openGift() {
+
+    const opening =
+      document.getElementById("opening");
+
+    const letter =
+      document.getElementById("letterScreen");
+
+    const butterflies =
+      document.getElementById("butterflies");
+
+
+    /*
+      The visitor has now clicked,
+      so the browser allows audio.
+    */
+
+    startMusic();
+
+
+    /*
+      Hide opening screen
+    */
+
+    opening.classList.add("hide");
+
+
+    /*
+      Start butterflies
+    */
+
+    butterflies.classList.add("fly");
+
+
+    /*
+      Open letter
+    */
+
+    setTimeout(() => {
+
+      letter.classList.add("show");
+
+    }, 500);
+
+
+    /*
+      Remove butterflies after
+      their flight animation
+    */
+
+    setTimeout(() => {
+
+      butterflies.classList.remove("fly");
+
+    }, 5500);
+
+  }
+
+
+  /*
+    Optional:
+    Pressing Escape closes the letter.
+  */
+
+  document.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (event.key === "Escape") {
+
+        const letter =
+          document.getElementById("letterScreen");
+
+        letter.classList.remove("show");
+
+      }
+
+    }
+  );
+
+</script>
